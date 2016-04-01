@@ -1,0 +1,94 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template block_loancalc/main
+
+    Template for the Loan calculator block content.
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * data-calculate
+
+    Context variables required for this template:
+    * none
+
+    Example context (json):
+    {
+    }
+}}
+<div>
+    <form id="{{uniqid}}-loancalculator">
+        <label>
+            {{# str }} interestrate, block_loancalc {{/ str}}
+            <div class="input-append">
+                <input name="interestrate" type="text" placeholder="{{# str }} insertvalue, block_loancalc {{/ str }}" value="2.50">
+                <span class="add-on">%</span>
+            </div>
+        </label>
+
+        <label>
+            {{# str }} repaymentfreq, block_loancalc {{/ str }}
+            <div>
+                <select name="repaymentfreq">
+                    <option value="52">{{# str }} weekly, block_loancalc {{/ str }}</option>
+                    <option value="26">{{# str }} fortnightly, block_loancalc {{/ str }}</option>
+                    <option value="12">{{# str }} monthly, block_loancalc {{/ str }}</option>
+                </select>
+            </div>
+        </label>
+
+        <div class="help-block">{{# str }} inserthelp, block_loancalc {{/ str }}</div>
+
+        <label>
+            {{# str }} amountofloan, block_loancalc {{/ str }}
+            <div class="input-append">
+                <input name="amountofloan" type="text"">
+                <button data-calculate="amountofloan" class="btn" type="button">
+                    {{# pix }} t/calc, core, {{# str }} calculatethis, block_loancalc {{/ str }} {{/ pix }}
+                </button>
+            </div>
+        </label>
+
+        <label>
+            {{# str }} repaymentamount, block_loancalc {{/ str }}
+            <div class="input-append">
+                <input name="repaymentamount" type="text"">
+                <button data-calculate="repaymentamount" class="btn" type="button">
+                    {{# pix }} t/calc, core, {{# str }} calculatethis, block_loancalc {{/ str }} {{/ pix }}
+                </button>
+            </div>
+        </label>
+
+        <label>
+            {{# str }} loanterm, block_loancalc {{/ str }}
+            <div class="input-append">
+                <input name="loanterm" type="text"">
+                <button data-calculate="loanterm" class="btn" type="button">
+                    {{# pix }} t/calc, core, {{# str }} calculatethis, block_loancalc {{/ str }} {{/ pix }}
+                </button>
+            </div>
+        </label>
+    </form>
+</div>
+
+{{# js }}
+    require(["block_loancalc/ui"], function(ui) {
+        ui.init("{{uniqid}}-loancalculator");
+    });
+{{/ js }}
