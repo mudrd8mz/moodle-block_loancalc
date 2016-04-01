@@ -6,7 +6,7 @@ interest rate, repayment frequency and two of three other parameters (amount
 of loan, repayment amount and loan term), the block calculates the third
 parameter.
 
-Sound cool, right?
+Sounds cool, right?
 
 * The block had been part of standard Moodle distribution since 2005,
   originally as blocks/student_loan_calc.
